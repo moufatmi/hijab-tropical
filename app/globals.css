@@ -1,0 +1,313 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: var(--font-geist-sans), 'Geist Fallback';
+  --font-mono: var(--font-geist-mono), 'Geist Mono Fallback';
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: light;
+  --background: #d3ebdb;
+  --foreground: #08281a;
+  --card: rgba(211, 235, 219, 0.7);
+  --card-foreground: #08281a;
+  --popover: #d3ebdb;
+  --popover-foreground: #08281a;
+  --primary: #0a5c66;
+  --primary-foreground: #d3ebdb;
+  --secondary: #e2725b;
+  --secondary-foreground: #d3ebdb;
+  --muted: rgba(8, 40, 26, 0.1);
+  --muted-foreground: #1b4f3a;
+  --accent: #f7a5b6;
+  --accent-foreground: #08281a;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: rgba(8, 40, 26, 0.15);
+  --input: rgba(8, 40, 26, 0.15);
+  --ring: #1f8b8c;
+  --chart-1: #0a5c66;
+  --chart-2: #f7a5b6;
+  --chart-3: #e2725b;
+  --chart-4: #08281a;
+  --chart-5: #1f8b8c;
+  --radius: 0.625rem;
+  --sidebar: #d3ebdb;
+  --sidebar-foreground: #08281a;
+  --sidebar-primary: #0a5c66;
+  --sidebar-primary-foreground: #d3ebdb;
+  --sidebar-accent: #f7a5b6;
+  --sidebar-accent-foreground: #08281a;
+  --sidebar-border: rgba(8, 40, 26, 0.15);
+  --sidebar-ring: #1f8b8c;
+}
+
+.dark {
+  color-scheme: dark;
+  --background: #c2ded0;
+  --foreground: #03170e;
+  --card: rgba(194, 222, 208, 0.8);
+  --card-foreground: #03170e;
+  --popover: #c2ded0;
+  --popover-foreground: #03170e;
+  --primary: #0a5c66;
+  --primary-foreground: #c2ded0;
+  --secondary: #cc5840;
+  --secondary-foreground: #c2ded0;
+  --muted: rgba(3, 23, 14, 0.1);
+  --muted-foreground: #14422e;
+  --accent: #e6889b;
+  --accent-foreground: #03170e;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: rgba(3, 23, 14, 0.15);
+  --input: rgba(3, 23, 14, 0.15);
+  --ring: #1f8b8c;
+  --chart-1: #0a5c66;
+  --chart-2: #e6889b;
+  --chart-3: #cc5840;
+  --chart-4: #03170e;
+  --chart-5: #1f8b8c;
+  --sidebar: #c2ded0;
+  --sidebar-foreground: #03170e;
+  --sidebar-primary: #0a5c66;
+  --sidebar-primary-foreground: #c2ded0;
+  --sidebar-accent: #e6889b;
+  --sidebar-accent-foreground: #03170e;
+  --sidebar-border: rgba(3, 23, 14, 0.15);
+  --sidebar-ring: #1f8b8c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    color-scheme: dark;
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.205 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.205 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.922 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.556 0 0);
+    --chart-1: oklch(0.87 0 0);
+    --chart-2: oklch(0.556 0 0);
+    --chart-3: oklch(0.439 0 0);
+    --chart-4: oklch(0.371 0 0);
+    --chart-5: oklch(0.269 0 0);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.556 0 0);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-transparent text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+@layer utilities {
+  .animate-orb-1 {
+    animation: orb-float-1 25s infinite ease-in-out;
+  }
+  .animate-orb-2 {
+    animation: orb-float-2 30s infinite ease-in-out;
+  }
+  .animate-orb-3 {
+    animation: orb-float-3 28s infinite ease-in-out;
+  }
+  .animate-orb-4 {
+    animation: orb-float-4 35s infinite ease-in-out;
+  }
+  .animate-wind-flow {
+    animation: wind-flow 12s infinite ease-in-out;
+  }
+  .animate-leaf-float-1 {
+    animation: leaf-float-1 16s infinite linear;
+  }
+  .animate-leaf-float-2 {
+    animation: leaf-float-2 20s infinite linear;
+  }
+  .animate-leaf-float-3 {
+    animation: leaf-float-3 24s infinite linear;
+  }
+  .animate-tropical-sway {
+    animation: tropical-sway 18s infinite ease-in-out;
+  }
+}
+
+@keyframes orb-float-1 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate(100px, -120px) scale(1.2) rotate(120deg);
+  }
+  66% {
+    transform: translate(-80px, 60px) scale(0.8) rotate(240deg);
+  }
+}
+
+@keyframes orb-float-2 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate(-120px, 100px) scale(1.3) rotate(-180deg);
+  }
+}
+
+@keyframes orb-float-3 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+  }
+  40% {
+    transform: translate(80px, 80px) scale(0.9) rotate(90deg);
+  }
+  70% {
+    transform: translate(-50px, -90px) scale(1.1) rotate(270deg);
+  }
+}
+
+@keyframes orb-float-4 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate(140px, -60px) scale(1.25) rotate(180deg);
+  }
+}
+
+@keyframes wind-flow {
+  0%, 100% {
+    transform: translateY(0px) skewX(0deg) scaleY(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(15px) skewX(4deg) scaleY(1.05);
+    opacity: 0.35;
+  }
+}
+
+@keyframes leaf-float-1 {
+  0% {
+    transform: translateY(105vh) translateX(0vw) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-5vh) translateX(25vw) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes leaf-float-2 {
+  0% {
+    transform: translateY(105vh) translateX(15vw) rotate(45deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.4;
+  }
+  85% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-5vh) translateX(-15vw) rotate(-315deg);
+    opacity: 0;
+  }
+}
+
+@keyframes leaf-float-3 {
+  0% {
+    transform: translateY(105vh) translateX(-10vw) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.3;
+  }
+  80% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-5vh) translateX(10vw) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes tropical-sway {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(4deg) scale(1.03);
+  }
+}
+

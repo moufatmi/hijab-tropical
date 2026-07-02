@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tropical - Business Plan Presentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1f8b8c;
+            --primary-dark: #0a5c66;
+            --primary-light: #e5f5f3;
+            --primary-text: #08281a;
+            --secondary: #e2725b;
+            --accent: #f7a5b6;
+            --bg-light: #d3ebdb;
+            --text-main: #08281a;
+            --text-light: #1b4f3a;
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Outfit', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-y: auto;
+        }
+
+        /* --- PRESENTATION SLIDE STYLES --- */
+        .presentation-container {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            max-width: 1000px;
+            height: auto;
+            min-height: 480px;
+            background: rgba(211, 235, 219, 0.82);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(8, 40, 26, 0.08);
+            padding: 40px;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(8, 40, 26, 0.1);
+            backdrop-filter: blur(12px);
+            animation: fadeIn 0.5s ease;
+            z-index: 10;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 12px;
+        }
+
+        .slide-logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .slide-logo span {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+        }
+
+        .slide-category {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .slide-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 15px;
+            padding: 15px 0;
+        }
+
+        .slide-title {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            line-height: 1.2;
+        }
+
+        .slide-body {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        .slide-bullets {
+            list-style-type: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .slide-bullets li {
+            position: relative;
+            padding-left: 25px;
+            font-size: 1.05rem;
+        }
+
+        .slide-bullets li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        .slide-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            border-top: 1px solid #eee;
+            padding-top: 12px;
+        }
+
+        /* --- DECORATIONS & GRIDS --- */
+        .color-palette-grid {
+            display: grid;
+            grid-template-cols: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .color-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .color-swatch {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 0.8rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s;
+        }
+
+        .color-swatch:hover {
+            transform: scale(1.05);
+        }
+
+        .color-name {
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .two-col-grid {
+            display: grid;
+            grid-template-cols: 1.2fr 0.8fr;
+            gap: 25px;
+            align-items: center;
+        }
+
+        /* --- BUSINESS MODEL CANVAS TABLEAU STYLES --- */
+        .bmc-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: 140px 140px 95px;
+            gap: 8px;
+            margin-top: 5px;
+        }
+
+        .bmc-box {
+            background-color: rgba(211, 235, 219, 0.9);
+            border: 1.5px solid rgba(8, 40, 26, 0.15);
+            border-radius: 10px;
+            padding: 8px;
+            overflow-y: auto;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+            transition: border-color 0.2s;
+        }
+
+        .bmc-box:hover {
+            border-color: var(--primary);
+        }
+
+        .bmc-box h3 {
+            font-size: 0.72rem;
+            color: var(--primary-dark);
+            margin-bottom: 6px;
+            border-bottom: 1px solid rgba(8, 40, 26, 0.15);
+            padding-bottom: 3px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .bmc-box ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .bmc-box li {
+            margin-bottom: 3px;
+            font-size: 0.68rem;
+            position: relative;
+            padding-left: 10px;
+            line-height: 1.2;
+            color: var(--text-main);
+        }
+
+        .bmc-box li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        .row-span-2 {
+            grid-row: span 2;
+        }
+
+        .col-span-2 {
+            grid-column: span 2;
+        }
+
+        .col-span-3 {
+            grid-column: span 3;
+        }
+
+        .bmc-box.highlight {
+            background-color: var(--primary-light);
+            border-color: var(--primary);
+        }
+
+        .bmc-box.bg-footer {
+            background-color: rgba(211, 235, 219, 0.7);
+        }
+
+        /* --- NAVIGATION CONTROLS --- */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: #d3ebdb;
+            border-top: 1px solid rgba(8, 40, 26, 0.15);
+            z-index: 50;
+        }
+
+        .nav-btn {
+            background-color: var(--primary);
+            color: #d3ebdb;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .nav-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .progress-bar-container {
+            flex-grow: 1;
+            margin: 0 30px;
+            height: 6px;
+            background-color: var(--primary-light);
+            border-radius: 3px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background-color: var(--secondary);
+            width: 8.3%;
+            transition: width 0.3s ease;
+        }
+
+        .slide-counter {
+            font-weight: 600;
+            color: var(--text-light);
+            min-width: 50px;
+            text-align: right;
+        }
+
+        /* --- COVER SPECIFIC STYLES --- */
+        .cover-slide {
+            color: var(--text-main);
+            text-align: center;
+            justify-content: center !important;
+            align-items: center;
+        }
+
+        .cover-title {
+            font-size: 3.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+
+        .cover-subtitle {
+            font-size: 1.4rem;
+            color: var(--secondary);
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .cover-credits {
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        /* --- AI CHAT WIDGET STYLES --- */
+        .ai-chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            font-family: var(--font-body);
+        }
+
+        .ai-chat-btn {
+            background-color: var(--primary-dark);
+            color: #d3ebdb;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            border: 2px solid #08281a;
+        }
+
+        .ai-chat-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .ai-chat-panel {
+            position: absolute;
+            bottom: 85px;
+            right: 0;
+            width: 380px;
+            height: 500px;
+            background-color: #d3ebdb;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            border: 2px solid var(--primary-dark);
+        }
+
+        .ai-chat-panel.active {
+            display: flex;
+        }
+
+        .ai-chat-header {
+            background-color: var(--primary-dark);
+            color: var(--primary-text);
+            padding: 15px;
+            font-family: var(--font-heading);
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .close-chat-btn {
+            cursor: pointer;
+            font-size: 1.2rem;
+            background: none;
+            border: none;
+            color: var(--primary-text);
+        }
+
+        .ai-chat-messages {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: var(--bg-light);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chat-bubble {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .chat-bubble.user {
+            align-self: flex-end;
+            background-color: var(--primary);
+            color: #d3ebdb;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-bubble.ai {
+            align-self: flex-start;
+            background-color: rgba(211, 235, 219, 0.95);
+            color: var(--text-main);
+            border: 1px solid rgba(8, 40, 26, 0.15);
+            border-bottom-left-radius: 4px;
+        }
+
+        .ai-chat-input {
+            display: flex;
+            padding: 15px;
+            border-top: 1px solid rgba(8, 40, 26, 0.15);
+            background-color: #d3ebdb;
+        }
+
+        .ai-chat-input input {
+            flex-grow: 1;
+            padding: 12px 15px;
+            border: 1px solid rgba(8, 40, 26, 0.2);
+            border-radius: 25px;
+            outline: none;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+        }
+
+        .ai-chat-input input:focus {
+            border-color: var(--primary-dark);
+            box-shadow: 0 0 5px rgba(157, 231, 215, 0.5);
+        }
+
+        .ai-chat-input button {
+            background-color: var(--primary-dark);
+            color: var(--primary-text);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: opacity 0.2s;
+        }
+
+        .ai-chat-input button:hover {
+            opacity: 0.8;
+        }
+
+        .typing-indicator {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-style: italic;
+            display: none;
+            padding-left: 15px;
+            padding-bottom: 10px;
+            background-color: var(--bg-light);
+            margin: 0;
+        }
+
+        /* --- TROPICAL FULL-PAGE BACKGROUND STYLES --- */
+        .fixed-bg {
+            position: fixed;
+            inset: 0;
+            background-image: url('/tropical-bg.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.38;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .glow-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        .orb-1 {
+            top: 10%;
+            left: 5%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(138, 220, 209, 0.4) 0%, transparent 70%);
+        }
+
+        .orb-2 {
+            top: 35%;
+            right: 10%;
+            width: 55vw;
+            height: 55vw;
+            background: radial-gradient(circle, rgba(252, 206, 214, 0.45) 0%, transparent 70%);
+        }
+
+        .orb-3 {
+            bottom: 5%;
+            left: 20%;
+            width: 45vw;
+            height: 45vw;
+            background: radial-gradient(circle, rgba(243, 219, 131, 0.4) 0%, transparent 70%);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Tropical Background Theme Elements -->
+    <div class="fixed-bg"></div>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+
+    <div class="presentation-container">
+        <!-- Slide 1: Introduction (Page de Garde) -->
+        <div class="slide active cover-slide">
+            <h1 class="cover-title">TROPICAL</h1>
+            <p class="cover-subtitle">L'Élégance du Modest Fashion Inspirée par la Nature</p>
+            <div class="cover-credits">
+                <p>Créé & Présenté par : <strong>Chaimae El Moussaddar & Douae El Morabete</strong></p>
+                <p style="margin-top: 8px; font-size: 0.85rem; opacity: 0.65;">Projet de Création d'Entreprise - Module
+                    Entrepreneuriat</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Présentation du Projet -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-logo"><span></span>TROPICAL</div>
+                <div class="slide-category">1. Présentation du Projet</div>
+            </div>
+            <div class="slide-content">
+                <h2 class="slide-title">Pourquoi "Tropical" ?</h2>
+                <div class="two-col-grid">
+                    <div>
+                        <p class="slide-body" style="margin-bottom: 15px;">
+                            <strong>Tropical</strong> est une marque marocaine de Modest Fashion spécialisée dans la
+                            création et la vente de hijabs et foulards haut de gamme.
+                        </p>
+                        <ul class="slide-bullets">
+                            <li><strong>Inspiration Naturelle</strong> : Nos collections sont entièrement inspirées par
+                                les palettes de couleurs sauvages de la flore tropicale.</li>
+                            <li><strong>Audace & Différence</strong> : Des teintes zénithales, variées et audacieuses
+                                pour rompre avec la monotonie des hijabs neutres traditionnels.</li>
+                            <li><strong>Qualité Sans Compromis</strong> : Une sélection rigoureuse de tissus légers,
+                                fluides et durables pour un confort absolu.</li>
+                        </ul>
+                    </div>
+                    <div
+                        style="background-color: var(--primary-light); padding: 25px; border-radius: 15px; border: 1px solid rgba(0,0,0,0.05); text-align: center;">
+                        <p
+                            style="font-size: 1.2rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 10px;">
+                            Notre Concept</p>
+                        <p style="font-size: 0.95rem; line-height: 1.4;">Unir l'audace chromatique de la nature sauvage
+                            avec l'élégance et la modestie au quotidien.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>Tropical Hijabs BP</span>
+                <span>Page 2 / 12</span>
+            </div>
+        </div>
+
+        <!-- Slide 3: Objectifs du Projet -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-logo"><span></span>TROPICAL</div>
+                <div class="slide-category">2. Objectifs du Projet</div>
+            </div>
+            <div class="slide-content">
+                <h2 class="slide-title">Nos Horizons de Développement</h2>
+                <ul class="slide-bullets">
+                    <li><strong>Court Terme (0-6 mois)</strong> : Lancer officiellement la boutique e-commerce avec
+                        notre collection initiale de 13 produits phares et acquérir les 500 premières clientes actives
+                        au Maroc.</li>
+                    <li><strong>Moyen Terme (1-2 ans)</strong> : Élargir notre gamme de produits en introduisant des
+                        abayas et robes modestes coordonnées, tout en créant une communauté forte de "Tropical Sisters"
+                        sur Instagram et TikTok.</li>
+                    <li><strong>Long Terme (3-5 ans)</strong> : Devenir la marque D2C de référence du Modest Fashion
+                        éco-responsable en Afrique du Nord et s'ouvrir à l'exportation vers le marché européen.</li>
+                </ul>
+            </div>
+            <div class="slide-footer">
+                <span>Tropical Hijabs BP</span>
+                <span>Page 3 / 12</span>
+            </div>
+        </div>
+
+        <!-- Slide 4: Le Business Model Canvas (BMC Tableau) -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-logo"><span></span>TROPICAL</div>
+                <div class="slide-category">3. Le Business Model Canvas</div>
+            </div>
+            <div class="slide-content" style="justify-content: flex-start; gap: 5px;">
+                <h2 class="slide-title" style="font-size: 1.5rem;">Business Model Canvas (Tableau)</h2>
+
+                <div class="bmc-grid">
+                    <!-- Partenaires -->
+                    <div class="bmc-box row-span-2">
+                        <h3>🤝 Partenaires</h3>
+                        <ul>
+                            <li>Producteurs de tissus éthiques</li>
+                            <li>Ateliers de couture marocains</li>
+                            <li>Influenceuses Modest Fashion</li>
+                            <li>Livreurs (Aramex/Catégories locales)</li>
+                        </ul>
+                    </div>
+                    <!-- Activités -->
+                    <div class="bmc-box">
+                        <h3>⚙️ Activités</h3>
+                        <ul>
+                            <li>Design artistique</li>
+                            <li>Branding & Shooting</li>
+                            <li>Gestion du site web</li>
+                            <li>Campagnes marketing</li>
+                        </ul>
+                    </div>
+                    <!-- Proposition de Valeur -->
+                    <div class="bmc-box row-span-2 highlight">
+                        <h3>✨ Proposition Valeur</h3>
+                        <ul>
+                            <li>Hijabs de haute qualité</li>
+                            <li>Des couleurs audacieuses et éclatantes, inspirées de la nature.</li>
+                            <li>Nuances zénithales sauvages</li>
+                            <li>Boutique e-commerce fluide</li>
+                            <li>Assistant IA interactif</li>
+                        </ul>
+                    </div>
+                    <!-- Relations -->
+                    <div class="bmc-box">
+                        <h3>❤️ Relations</h3>
+                        <ul>
+                            <li>Support e-commerce 24/7</li>
+                            <li>Boutique IA interactive</li>
+                            <li>Réseaux sociaux interactifs</li>
+                        </ul>
+                    </div>
+                    <!-- Segments -->
+                    <div class="bmc-box row-span-2">
+                        <h3>👥 Segments</h3>
+                        <ul>
+                            <li>Femmes actives 18-35 ans</li>
+                            <li>Amoureuses de la nature</li>
+                            <li>Consommatrices éco-sensibles</li>
+                        </ul>
+                    </div>
+                    <!-- Ressources -->
+                    <div class="bmc-box">
+                        <h3>🎒 Ressources</h3>
+                        <ul>
+                            <li>Designs exclusifs (Chaimae)</li>
+                            <li>Infrastructure Supabase</li>
+                            <li>Stock initial de 13 coloris</li>
+                        </ul>
+                    </div>
+                    <!-- Canaux -->
+                    <div class="bmc-box">
+                        <h3>🚚 Canaux</h3>
+                        <ul>
+                            <li>Boutique en ligne D2C</li>
+                            <li>Instagram Shopping</li>
+                            <li>TikTok & Pinterest</li>
+                        </ul>
+                    </div>
+                    <!-- Structure des Coûts -->
+                    <div class="bmc-box col-span-2 bg-footer">
+                        <h3>💰 Coûts</h3>
+                        <ul>
+                            <li>Production & Tissus : 50%</li>
+                            <li>Marketing & Influence : 30%</li>
+                            <li>Logistique & Packaging : 20%</li>
+                        </ul>
+                    </div>
+                    <!-- Sources de Revenus -->
+                    <div class="bmc-box col-span-3 bg-footer">
+                        <h3>💵 Revenus</h3>
+                        <ul>
+                            <li>Ventes directes unitaire de hijabs (190 DH / unité)</li>
+                            <li>Coffrets cadeaux saisonniers personnalisés</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>Tropical Hijabs BP</span>
+                <span>Page 4 / 12</span>
+            </div>
+        </div>
+
+        <!-- Slide 5: Avatar Client (Client Cible) -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-logo"><span></span>TROPICAL</div>
+                <div class="slide-category">4. Avatar Client</div>
+            </div>
+            <div class="slide-content">
+                <h2 class="slide-title">Qui est notre cliente idéale ?</h2>
+                <div class="two-col-grid">
+                    <div>
+                        <p style="font-size: 1.3rem; font-weight: bold; color: var(--secondary); margin-bottom: 5px;">
+                            Sara, 24 ans — Étudiante & Active</p>
+                        <p class="slide-body" style="margin-bottom: 12px;">Citadine, branchée et passionnée de mode
+                            éthique.</p>
+                        <ul class="slide-bullets" style="font-size: 0.95rem;">
+                            <li><strong>Besoins</strong> : Elle cherche des foulards et hijabs confortables pour ses
+                                longues journées, avec des teintes vives et audacieuses qui reflètent sa personnalité.
+                            </li>
+                            <li><strong>Frustrations</strong> : Lassée des coloris ternes, beiges et noirs uniformes
+                                vendus en boutique classique. Elle craint les tissus de mauvaise qualité qui s'abîment
+                                au lavage.</li>
+                        </ul>
+                    </div>
+                    <div
+                        style="background-color: #faf9f6; border-radius: 15px; padding: 20px; border-left: 5px solid var(--secondary);">
+                        <p style="font-style: italic; font-size: 1rem; color: var(--text-light);">
+                            "Je veux exprimer ma modestie avec style et fierté, à travers des couleurs éclatantes qui
+                            s'inspirent de la nature."
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>Tropical Hijabs BP</span>
+                <span>Page 5 / 12</span>
+            </div>
+        </div>
+
+        <!-- Slide 6: Notre Offre (Produits et Services) -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-logo"><span></span>TROPICAL</div>
+                <div class="slide-category">5. Notre Offre</div>
+            </div>
+            <div class="slide-content">
+                <h2 class="slide-title">La Collection Sauvage</h2>
+                <div class="two-col-grid">
+                    <div>
+                        <ul class="slide-bullets">
+                            <li><strong>13 Coloris Exclusifs</strong> : Inspirés par les forêts de mousson, les couchers
+                                de soleil volcaniques, et les lagons tropicaux (bleu brume, terracota éclat, marron
+                                satiné...).</li>
+                            <li><strong>Matières Premium</strong> : Mousseline de soie respirante, jersey de viscose
+                                extensible et cotons légers biologiques.</li>
+                            <li><strong>Services Associés</strong> : Coffrets cadeaux en carton kraft recyclé et ruban
+                                de raphia naturel, et conseils personnalisés de drapage en ligne.</li>
+                        </ul>
+                    </div>
+                    <div style="background-color: var(--primary-light); padding: 20px; border-radius: 12px;">
+                        <p style="font-weight: bold; color: var(--primary-dark); margin-bottom: 10px;">Gamme de prix :
+                        </p>
+                        <p style="font-size: 1.1rem; line-height: 1.4;">✓ Hijab unitaire : 190 DH<br>✓ Coffret Trio
+                            Premium : 490 DH<br>✓ Livraison Express : 35 DH (Offerte dès 350 DH)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>Tropical Hijabs BP</span>
+                <span>Page 6 / 12</span>
+            </div>
+        </div>
+
+        <!-- Slide 7: Notre Promesse au Client -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-logo"><span></span>TROPICAL</div>
+                <div class="slide-category">6. Notre Promesse</div>
+            </div>
+            <div class="slide-content">
+                <h2 class="slide-title">Nos Trois Engagements Majeurs</h2>
+                <ul class="slide-bullets">
+                    <li><strong>L'Authenticité Naturelle</strong> : Nous garantissons que chaque nuance de couleur
+                        reflète un paysage naturel réel pour vous connecter à la terre.</li>
+                    <li><strong>La Durabilité Éthique</strong> : Nos foulards sont conçus pour durer, avec des coutures
+                        renforcées et des teintures écologiques respectueuses de votre peau et de l'environnement.</li>
+                    <li><strong>Une Expérience Sensorielle Unique</strong> : Du déballage parfumé de votre coffret
+                        jusqu'au port du voile léger sur votre tête.</li>
+                </ul>
+            </div>
+            <div class="slide-footer">
+                <span>Tropical Hijabs BP</span>
+                <span>Page 7 / 12</span>
+            </div>
+        </div>
+
+        <!-- Slide 8: Charte Graphique et Identité Visuelle -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-logo"><span></span>TROPICAL</div>
+                <div class="slide-category">7. Charte Graphique</div>
+            </div>
+            <div class="slide-content">
+                <h2 class="slide-title">L'Identité Visuelle de Tropical</h2>
+                <div class="two-col-grid" style="grid-template-cols: 1fr 1fr;">
+                    <div>
+                        <ul class="slide-bullets" style="font-size: 0.95rem; gap: 8px;">
+                            <li><strong>Nom de Marque</strong> : TROPICAL (foulards & hijabs inspirés de la nature).
+                            </li>
+                            <li><strong>Slogan</strong> : "L'Audace de la Nature, l'Élégance de la Modestie."</li>
+                            <li><strong>Logo</strong> : Une feuille de Monstera minimaliste entrelacée avec la lettre
+                                "T" dorée.</li>
+                            <li><strong>Typographie</strong> : <em>Outfit</em> pour un rendu moderne, épuré et lisible.
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p
+                            style="font-weight: bold; font-size: 0.9rem; margin-bottom: 5px; color: var(--primary-dark);">
+                            Palette de Couleurs Officielles :</p>
+                        <div class="color-palette-grid" style="grid-template-cols: repeat(2, 1fr); gap: 10px;">
+                            <div class="color-card" style="flex-direction: row; gap: 8px; justify-content: flex-start;">
+                                <div style="width: 25px; height: 25px; border-radius: 50%; background-color: #0f5132;">
+                                </div>
+                                <span style="font-size: 0.75rem; font-weight: 600;">Vert Forêt (#0f5132)</span>
+                            </div>
+                            <div class="color-card" style="flex-direction: row; gap: 8px; justify-content: flex-start;">
+                                <div style="width: 25px; height: 25px; border-radius: 50%; background-color: #d95f38;">
+                                </div>
+                                <span style="font-size: 0.75rem; font-weight: 600;">Terracotta (#d95f38)</span>
+                            </div>
+                            <div class="color-card" style="flex-direction: row; gap: 8px; justify-content: flex-start;">
+                                <div style="width: 25px; height: 25px; border-radius: 50%; background-color: #ffc107;">
+                                </div>
+                                <span style="font-size: 0.75rem; font-weight: 600;">Jaune Mangue (#ffc107)</span>
+                            </div>
+                            <div class="color-card" style="flex-direction: row; gap: 8px; justify-content: flex-start;">
+                                <div style="width: 25px; height: 25px; border-radius: 50%; background-color: #f08080;">
+                                </div>
+                                <span style="font-size: 0.75rem; font-weight: 600;">Rose Hibiscus (#f08080)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>Tropical Hijabs BP</span>
+                <span>Page 8 / 12</span>
+            </div>
+        </div>
+
+        <!-- Slide 9: Avantage Concurrentiel -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-logo"><span></span>TROPICAL</div>
+                <div class="slide-category">8. Avantage Concurrentiel</div>
+            </div>
+            <div class="slide-content">
+                <h2 class="slide-title">Pourquoi Tropical se démarque ?</h2>
+                <ul class="slide-bullets">
+                    <li><strong>Unicité Chromatique</strong> : Nous sommes la seule marque marocaine à proposer
+                        exclusivement des couleurs zénithales, audacieuses et texturées directement inspirées des
+                        éléments naturels.</li>
+                    <li><strong>Technologie Moderne</strong> : Un site e-commerce ultra-rapide (Next.js & Supabase) avec
+                        gestion de stock en temps réel et checkout sécurisé sans friction.</li>
+                    <li><strong>Assistant IA Virtuel Co-Fondateur</strong> : Intégration d'un chatbot IA qui connaît
+                        notre catalogue et notre philosophie pour accompagner la cliente dans ses choix de style.</li>
+                </ul>
+            </div>
+            <div class="slide-footer">
+                <span>Tropical Hijabs BP</span>
+                <span>Page 9 / 12</span>
+            </div>
+        </div>
+
+        <!-- Slide 10: Stratégie de Communication et Marketing -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-logo"><span></span>TROPICAL</div>
+                <div class="slide-category">9. Stratégie Marketing</div>
+            </div>
+            <div class="slide-content">
+                <h2 class="slide-title">Notre Plan d'Acquisition Client</h2>
+                <ul class="slide-bullets">
+                    <li><strong>Marketing d'Influence (Instagram & TikTok)</strong> : Envoi de coffrets de lancement
+                        personnalisés à des créatrices de contenu modest fashion influentes au Maroc pour des revues
+                        honnêtes.</li>
+                    <li><strong>Social Selling & Reels</strong> : Création hebdomadaire de vidéos tutoriels ("Comment
+                        draper votre hijab Tropical en moins d'une minute", "Associer le Terracotta avec vos tenues de
+                        bureau").</li>
+                    <li><strong>Fidélisation & Communauté</strong> : Création de la communauté "Tropical Sisters" avec
+                        remises exclusives pour encourager le parrainage et le bouche-à-oreille.</li>
+                </ul>
+            </div>
+            <div class="slide-footer">
+                <span>Tropical Hijabs BP</span>
+                <span>Page 10 / 12</span>
+            </div>
+        </div>
+
+        <!-- Slide 11: Budget Prévisionnel -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-logo"><span></span>TROPICAL</div>
+                <div class="slide-category">10. Budget Prévisionnel</div>
+            </div>
+            <div class="slide-content">
+                <h2 class="slide-title">Plan Financier Initial</h2>
+                <div class="two-col-grid">
+                    <div>
+                        <p style="font-weight: bold; margin-bottom: 8px; color: var(--primary-dark);">Dépenses de
+                            Lancement (DH) :</p>
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
+                            <tr style="border-bottom: 1px solid #eee; padding: 5px 0;">
+                                <td style="padding: 5px 0;">Achat Tissus & Production (13 coloris)</td>
+                                <td style="text-align: right; font-weight: 600;">15 000 DH</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td style="padding: 5px 0;">Marketing digital & Publicités</td>
+                                <td style="text-align: right; font-weight: 600;">8 000 DH</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td style="padding: 5px 0;">Packaging & Boîtes en carton kraft</td>
+                                <td style="text-align: right; font-weight: 600;">4 000 DH</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td style="padding: 5px 0;">Hébergement & Outils E-commerce</td>
+                                <td style="text-align: right; font-weight: 600;">3 000 DH</td>
+                            </tr>
+                            <tr style="font-weight: bold; color: var(--secondary);">
+                                <td style="padding: 8px 0;">Total Besoin en Financement</td>
+                                <td style="text-align: right; padding: 8px 0;">30 000 DH</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div
+                        style="background-color: var(--primary-light); padding: 20px; border-radius: 12px; border-left: 5px solid var(--primary);">
+                        <p style="font-weight: bold; color: var(--primary-dark); margin-bottom: 8px;">Rentabilité
+                            Estimée :</p>
+                        <p style="font-size: 0.9rem; line-height: 1.4;">✓ Prix de vente : 190 DH / unité<br>✓ Coût
+                            unitaire (COGS) : 60 DH<br>✓ Marge Brute : 68% (130 DH par unité)<br>✓ Point Mort : Vente de
+                            230 unités pour amortir l'investissement de lancement.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>Tropical Hijabs BP</span>
+                <span>Page 11 / 12</span>
+            </div>
+        </div>
+
+        <!-- Slide 12: Conclusion -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-logo"><span></span>TROPICAL</div>
+                <div class="slide-category">11. Conclusion</div>
+            </div>
+            <div class="slide-content" style="text-align: center;">
+                <h2 class="slide-title" style="margin-bottom: 15px;">Le Modest Fashion Connecté à la Terre</h2>
+                <p class="slide-body" style="max-width: 700px; margin: 0 auto 20px auto; font-size: 1.15rem;">
+                    Tropical réinvente le marché du modest wear en alliant audace esthétique, éco-responsabilité, et
+                    excellence technologique au Maroc.
+                </p>
+                <p style="font-weight: bold; color: var(--primary-dark); font-size: 1.3rem;">
+                    Merci de votre attention.
+                </p>
+
+            </div>
+            <div class="slide-footer">
+                <span>Tropical Hijabs BP</span>
+                <span>Page 12 / 12</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION CONTROLS -->
+    <div class="controls">
+        <button class="nav-btn" id="prevBtn" onclick="prevSlide()" disabled>Précédent</button>
+        <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="progressBar"></div>
+        </div>
+        <button class="nav-btn" id="nextBtn" onclick="nextSlide()">Suivant</button>
+        <div class="slide-counter" id="slideCounter">1 / 12</div>
+    </div>
+
+    <!-- AI CHAT WIDGET -->
+    <div class="ai-chat-widget">
+        <div class="ai-chat-panel" id="aiChatPanel">
+            <div class="ai-chat-header">
+                <span>✨ IA Co-Fondateur</span>
+                <button class="close-chat-btn" onclick="toggleChat()">✖</button>
+            </div>
+            <div class="ai-chat-messages" id="chatMessages">
+                <div class="chat-bubble ai">Bonjour ! Je suis l'assistant IA de Tropical. Je connais tout le Business
+                    Plan rédigé par Chaimae El Moussaddar par cœur. Posez-moi vos questions pour préparer votre
+                    présentation !</div>
+            </div>
+            <p class="typing-indicator" id="typingIndicator">L'IA réfléchit...</p>
+            <div class="ai-chat-input">
+                <input type="text" id="chatInput" placeholder="Ex: Quel est notre avantage concurrentiel ?"
+                    onkeypress="handleKeyPress(event)">
+                <button onclick="sendMessage()">➤</button>
+            </div>
+        </div>
+        <div class="ai-chat-btn" onclick="toggleChat()" title="Ouvrir l'Assistant IA">
+            ✨
+        </div>
+    </div>
+
+    <script>
+        // SLIDE NAVIGATION LOGIC
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const progressBar = document.getElementById('progressBar');
+        const slideCounter = document.getElementById('slideCounter');
+
+        function showSlide(index) {
+            slides.forEach((slide, idx) => {
+                if (idx === index) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+
+            // Update controls
+            prevBtn.disabled = index === 0;
+            nextBtn.disabled = index === slides.length - 1;
+
+            // Update progress bar
+            const percentage = ((index + 1) / slides.length) * 100;
+            progressBar.style.width = `${percentage}%`;
+
+            // Update counter
+            slideCounter.innerText = `${index + 1} / ${slides.length}`;
+        }
+
+        function nextSlide() {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        // --- AI CHAT WIDGET LOGIC (GEMINI API) ---
+
+        let chatHistory = [];
+
+        function toggleChat() {
+            const panel = document.getElementById('aiChatPanel');
+            panel.classList.toggle('active');
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        async function sendMessage() {
+            const inputField = document.getElementById('chatInput');
+            const message = inputField.value.trim();
+            if (!message) return;
+
+            // Add user message to UI
+            appendMessage(message, 'user');
+            inputField.value = '';
+
+            // Show loading indicator
+            document.getElementById('typingIndicator').style.display = 'block';
+
+            // Add to chat history for API context
+            chatHistory.push({
+                role: 'user',
+                parts: [{ text: message }]
+            });
+
+            try {
+                // Call Gemini API
+                const responseText = await callGeminiAPI(chatHistory);
+
+                // Add AI response to UI
+                appendMessage(responseText, 'ai');
+
+                // Add to chat history
+                chatHistory.push({
+                    role: 'model',
+                    parts: [{ text: responseText }]
+                });
+
+            } catch (error) {
+                console.error("Erreur API Gemini:", error);
+                appendMessage("Désolé, une erreur s'est produite lors de la connexion à l'IA.", 'ai');
+                chatHistory.pop(); // Remove failed user message
+            } finally {
+                // Hide loading indicator
+                document.getElementById('typingIndicator').style.display = 'none';
+            }
+        }
+
+        function appendMessage(text, sender) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const bubble = document.createElement('div');
+            bubble.className = `chat-bubble ${sender}`;
+            // Simple markdown handling for bold text
+            bubble.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            messagesContainer.appendChild(bubble);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight; // Auto-scroll
+        }
+
+        // Extracts all text from the slides to feed the AI context
+        function getPresentationContext() {
+            let contextText = "CONTENU DU BUSINESS PLAN 'TROPICAL' :\n\n";
+            document.querySelectorAll('.slide').forEach((slide, index) => {
+                let text = slide.innerText.replace(/\n\s*\n/g, '\n').trim();
+                contextText += `--- Section ${index + 1} ---\n${text}\n\n`;
+            });
+            return contextText;
+        }
+
+        async function callGeminiAPI(history) {
+            const apiKey = ""; // La clé est fournie automatiquement par l'environnement si disponible
+            if (!apiKey) {
+                // Graceful fallback to rich local responses based on the presentation contents
+                return getMockAIResponse(history[history.length - 1].parts[0].text);
+            }
+
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+            const presentationData = getPresentationContext();
+
+            const systemPrompt = `Tu es le co-fondateur et l'assistant IA virtuel intégré au Business Plan de "Tropical", une marque marocaine de Modest Fashion spécialisée dans les hijabs inspirés par la nature. 
+Ton rôle est de répondre aux questions du jury, du professeur ou des investisseurs.
+Utilise UNIQUEMENT le contexte fourni ci-dessous (qui est le texte exact des diapositives) pour répondre. 
+Si la réponse n'est pas explicitement dans le contexte, donne une réponse stratégique, intelligente et créative qui correspond parfaitement à l'esprit de la marque (Nature, Qualité Premium, Couleurs audacieuses, Terracotta, Vert Forêt).
+Sois direct, convaincant et parle toujours en français de manière très professionnelle.
+
+${presentationData}`;
+
+            const payload = {
+                contents: history,
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                }
+            };
+
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+
+            if (result.candidates && result.candidates[0].content.parts[0].text) {
+                return result.candidates[0].content.parts[0].text;
+            } else {
+                throw new Error("Structure de réponse invalide depuis l'API Gemini");
+            }
+        }
+
+        function getMockAIResponse(query) {
+            const lowerQuery = query.toLowerCase();
+
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    if (lowerQuery.includes('avantage') || lowerQuery.includes('fort') || lowerQuery.includes('concurrence')) {
+                        resolve("Notre **avantage concurrentiel** repose sur notre unicité chromatique (tons zénithaux sauvages introuvables ailleurs), notre infrastructure technologique moderne (Next.js 16 + Supabase), et l'intégration de ce copilote d'intelligence artificielle. Les designs exclusifs créés par **Chaimae El Moussaddar** garantissent une identité forte.");
+                    } else if (lowerQuery.includes('supabase') || lowerQuery.includes('technologie') || lowerQuery.includes('next.js') || lowerQuery.includes('tech')) {
+                        resolve("L'architecture technique combine **Next.js 16** (pour des performances de chargement ultra-rapides et un excellent SEO) et **Supabase** (comme base de données temps réel gérant nos 13 produits phares de manière dynamique).");
+                    } else if (lowerQuery.includes('couleur') || lowerQuery.includes('charte') || lowerQuery.includes('identit') || lowerQuery.includes('palette')) {
+                        resolve("La charte graphique de **Tropical** est composée de couleurs naturelles zénithales : **Vert Forêt Sauvage** (#0f5132), **Terracotta Flamboyant** (#d95f38), **Jaune Mangue** (#ffc107) et **Rose Hibiscus** (#f08080). Le slogan est *'L'Audace de la Nature, l'Élégance de la Modestie'*.");
+                    } else if (lowerQuery.includes('chaimae') || lowerQuery.includes('fondat') || lowerQuery.includes('créa') || lowerQuery.includes('douae')) {
+                        resolve("Le projet **Tropical** a été conçu et est présenté par le duo dynamique : **Chaimae El Moussaddar** et **Douae El Morabete**. Elles assurent la direction artistique, la conception des designs, le marketing et le développement de la marque.");
+                    } else if (lowerQuery.includes('bmc') || lowerQuery.includes('business model') || lowerQuery.includes('canvas')) {
+                        resolve("Notre **Business Model Canvas (BMC)** s'appuie sur une vente directe unitaire en ligne (D2C) à **190 DH / unité** (marge brute de 68%). Nos canaux principaux sont notre boutique en ligne et les réseaux sociaux, avec une logistique de livraison express au Maroc.");
+                    } else if (lowerQuery.includes('budget') || lowerQuery.includes('prix') || lowerQuery.includes('coût') || lowerQuery.includes('financ')) {
+                        resolve("Le budget de lancement initial est de **30 000 DH**, réparti entre la production de tissus (15 000 DH), le marketing digital (8 000 DH), le packaging (4 000 DH) et les outils e-commerce (3 000 DH). Nous estimons atteindre la rentabilité dès la vente de 230 unités.");
+                    } else if (lowerQuery.includes('avatar') || lowerQuery.includes('cible') || lowerQuery.includes('client')) {
+                        resolve("Notre avatar client est **Sara, 24 ans**, étudiante et active citadine. Elle recherche des hijabs confortables et élégants avec des teintes de caractère (vives et audacieuses) pour s'affranchir des teintes unies et fades du marché actuel.");
+                    } else if (lowerQuery.includes('offre') || lowerQuery.includes('produit')) {
+                        resolve("Notre offre se compose de hijabs et foulards premium en 13 coloris exclusifs (bleu brume, terracota éclat, marron satiné...) conçus à partir de tissus de haute qualité (mousseline, coton bio, jersey). Nous proposons des pièces unitaires à **190 DH** et des Coffrets Trio à **490 DH**.");
+                    } else {
+                        resolve("C'est une excellente question sur le projet **Tropical**. En tant que marque inspirée de la nature, notre but est d'offrir l'audace de la couleur zénithale tout en maintenant un standard de qualité de tissu exceptionnel pour notre cliente.");
+                    }
+                }, 1000);
+            });
+        }
+    </script>
+</body>
+
+</html>
