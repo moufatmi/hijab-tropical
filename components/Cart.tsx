@@ -22,6 +22,20 @@ interface CartProps {
 export default function Cart({ items, onRemove, onUpdateQuantity }: CartProps) {
   const total = items.reduce((sum, item) => sum + (item.price * item.quantity), 0)
 
+  const handleCheckout = () => {
+    const phoneNumber = "212665626902"
+    let message = "Bonjour, je souhaite passer une commande :\n\n"
+    items.forEach(item => {
+      message += `- ${item.quantity}x ${item.title} (${item.color}) - MAD ${(item.price * item.quantity).toFixed(2)}\n`
+    })
+    message += `\nSous-total : MAD ${total.toFixed(2)}`
+    message += `\nLivraison : MAD 10.00`
+    message += `\n*Total a payer : MAD ${(total + 10).toFixed(2)}*`
+    
+    const encodedMessage = encodeURIComponent(message)
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank')
+  }
+
   return (
     <main className="max-w-7xl mx-auto px-4 py-12">
       <h1 className="text-4xl font-bold text-foreground mb-12">Shopping Cart</h1>
@@ -109,8 +123,8 @@ export default function Cart({ items, onRemove, onUpdateQuantity }: CartProps) {
                 </div>
               </div>
 
-              <Button className="w-full bg-primary hover:bg-primary/90 py-6 text-lg">
-                Proceed to Checkout
+              <Button onClick={handleCheckout} className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white py-6 text-lg">
+                Commander via WhatsApp
               </Button>
 
               <p className="text-xs text-muted-foreground text-center mt-4">
