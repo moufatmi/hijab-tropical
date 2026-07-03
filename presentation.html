@@ -1247,21 +1247,21 @@ ${presentationData}`;
 
             return new Promise((resolve) => {
                 setTimeout(() => {
-                    if (lowerQuery.includes('avantage') || lowerQuery.includes('fort') || lowerQuery.includes('concurrence')) {
+                    if (lowerQuery.includes('avantage') || lowerQuery.includes('fort') || lowerQuery.includes('concurrence') || lowerQuery.includes('ميزة') || lowerQuery.includes('منافس')) {
                         resolve("Notre **avantage concurrentiel** repose sur notre unicité chromatique (tons zénithaux sauvages introuvables ailleurs), notre infrastructure technologique moderne (Next.js 16 + Supabase), et l'intégration de ce copilote d'intelligence artificielle. Les designs exclusifs créés par **Chaimae El Moussaddar** garantissent une identité forte.");
-                    } else if (lowerQuery.includes('supabase') || lowerQuery.includes('technologie') || lowerQuery.includes('next.js') || lowerQuery.includes('tech')) {
+                    } else if (lowerQuery.includes('supabase') || lowerQuery.includes('technologie') || lowerQuery.includes('next.js') || lowerQuery.includes('tech') || lowerQuery.includes('تقنية') || lowerQuery.includes('تكنولوجيا') || lowerQuery.includes('برمجة')) {
                         resolve("L'architecture technique combine **Next.js 16** (pour des performances de chargement ultra-rapides et un excellent SEO) et **Supabase** (comme base de données temps réel gérant nos 13 produits phares de manière dynamique).");
-                    } else if (lowerQuery.includes('couleur') || lowerQuery.includes('charte') || lowerQuery.includes('identit') || lowerQuery.includes('palette')) {
+                    } else if (lowerQuery.includes('couleur') || lowerQuery.includes('charte') || lowerQuery.includes('identit') || lowerQuery.includes('palette') || lowerQuery.includes('ألوان') || lowerQuery.includes('لون') || lowerQuery.includes('هوية')) {
                         resolve("La charte graphique de **Tropical** est composée de couleurs naturelles zénithales : **Vert Forêt Sauvage** (#0f5132), **Terracotta Flamboyant** (#d95f38), **Jaune Mangue** (#ffc107) et **Rose Hibiscus** (#f08080). Le slogan est *'L'Audace de la Nature, l'Élégance de la Modestie'*.");
-                    } else if (lowerQuery.includes('chaimae') || lowerQuery.includes('fondat') || lowerQuery.includes('créa') || lowerQuery.includes('douae')) {
+                    } else if (lowerQuery.includes('chaimae') || lowerQuery.includes('fondat') || lowerQuery.includes('créa') || lowerQuery.includes('douae') || lowerQuery.includes('شيماء') || lowerQuery.includes('دعاء') || lowerQuery.includes('مؤسس') || lowerQuery.includes('من أنتم') || lowerQuery.includes('انشاء') || lowerQuery.includes('مشروع')) {
                         resolve("Le projet **Tropical** a été conçu et est présenté par le duo dynamique : **Chaimae El Moussaddar** et **Douae El Morabete**. Elles assurent la direction artistique, la conception des designs, le marketing et le développement de la marque.");
-                    } else if (lowerQuery.includes('bmc') || lowerQuery.includes('business model') || lowerQuery.includes('canvas')) {
+                    } else if (lowerQuery.includes('bmc') || lowerQuery.includes('business model') || lowerQuery.includes('canvas') || lowerQuery.includes('نموذج') || lowerQuery.includes('عمل')) {
                         resolve("Notre **Business Model Canvas (BMC)** s'appuie sur une vente directe unitaire en ligne (D2C) à **190 DH / unité** (marge brute de 68%). Nos canaux principaux sont notre boutique en ligne et les réseaux sociaux, avec une logistique de livraison express au Maroc.");
-                    } else if (lowerQuery.includes('budget') || lowerQuery.includes('prix') || lowerQuery.includes('coût') || lowerQuery.includes('financ')) {
+                    } else if (lowerQuery.includes('budget') || lowerQuery.includes('prix') || lowerQuery.includes('coût') || lowerQuery.includes('financ') || lowerQuery.includes('ميزانية') || lowerQuery.includes('سعر') || lowerQuery.includes('ثمن') || lowerQuery.includes('تكلفة')) {
                         resolve("Le budget de lancement initial est de **30 000 DH**, réparti entre la production de tissus (15 000 DH), le marketing digital (8 000 DH), le packaging (4 000 DH) et les outils e-commerce (3 000 DH). Nous estimons atteindre la rentabilité dès la vente de 230 unités.");
-                    } else if (lowerQuery.includes('avatar') || lowerQuery.includes('cible') || lowerQuery.includes('client')) {
+                    } else if (lowerQuery.includes('avatar') || lowerQuery.includes('cible') || lowerQuery.includes('client') || lowerQuery.includes('زبون') || lowerQuery.includes('عميل') || lowerQuery.includes('فئة')) {
                         resolve("Notre avatar client est **Sara, 24 ans**, étudiante et active citadine. Elle recherche des hijabs confortables et élégants avec des teintes de caractère (vives et audacieuses) pour s'affranchir des teintes unies et fades du marché actuel.");
-                    } else if (lowerQuery.includes('offre') || lowerQuery.includes('produit')) {
+                    } else if (lowerQuery.includes('offre') || lowerQuery.includes('produit') || lowerQuery.includes('منتج') || lowerQuery.includes('حجاب') || lowerQuery.includes('عروض')) {
                         resolve("Notre offre se compose de hijabs et foulards premium en 13 coloris exclusifs (bleu brume, terracota éclat, marron satiné...) conçus à partir de tissus de haute qualité (mousseline, coton bio, jersey). Nous proposons des pièces unitaires à **190 DH** et des Coffrets Trio à **490 DH**.");
                     } else {
                         resolve("C'est une excellente question sur le projet **Tropical**. En tant que marque inspirée de la nature, notre but est d'offrir l'audace de la couleur zénithale tout en maintenant un standard de qualité de tissu exceptionnel pour notre cliente.");
